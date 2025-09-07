@@ -1,23 +1,31 @@
-Why use this?
+📦 Dependency Checker
 
-Running npm outdated and npm audit separately is annoying.
+A lightweight TypeScript tool to keep your project dependencies up-to-date and secure.
+It scans for outdated packages, runs npm audit, and can even auto-fix vulnerabilities.
+Works with single projects and monorepos (packages/*/), and generates both JSON and Markdown reports.
 
-Sometimes you forget to check vulnerabilities until production (oops).
+🚀 Features
 
-Teams without Dependabot/Renovate/Snyk still need a lightweight safety net.
+🔍 Check outdated dependencies (npm outdated)
 
-This tool combines everything into one step and gives you reports you can actually read.
+🛡️ Run security audit (npm audit)
 
-Setup
+⚡ Auto-fix issues (--fix, with optional --force)
 
-Install TypeScript support if you don’t already have it:
+📂 Monorepo support (scans packages/*/)
+
+📑 Generates dependency-report.json + dependency-report.md
+
+🛠️ Setup
+
+Install TypeScript + Node.js typings (if not already installed):
 
 npm install --save-dev ts-node typescript @types/node
 
 
 Save the script as dependency-checker.ts in your project root.
 
-(Optional but recommended) Add a tsconfig.json if you don’t already have one:
+(Optional) Create or update tsconfig.json:
 
 {
   "compilerOptions": {
@@ -30,25 +38,25 @@ Save the script as dependency-checker.ts in your project root.
   }
 }
 
-Usage
-Check dependencies
+📌 Usage
+🔍 Check dependencies
 ts-node dependency-checker.ts
 
-Auto-fix safe issues
+🛠️ Auto-fix safe issues
 ts-node dependency-checker.ts --fix
 
-Auto-fix everything (can break stuff!)
+💥 Auto-fix everything (⚠️ may break)
 ts-node dependency-checker.ts --fix --force
 
-Output
+📊 Output
 
-Console summary for each project
+✅ Console summary for each project
 
-dependency-report.json → machine-readable
+📄 dependency-report.json → machine-readable
 
-dependency-report.md → human-readable (great for PRs or Slack)
+📝 dependency-report.md → human-readable (great for PRs or Slack)
 
-Example Markdown:
+Example Markdown report:
 
 ### api-service
 - Path: packages/api
@@ -56,20 +64,23 @@ Example Markdown:
 - Vulnerabilities: Critical=0, High=1, Moderate=3, Low=5
 - AutoFix: ✅ Applied
 
-Precautions ⚠️
+⚠️ Precautions
 
-Auto-fix may change your lockfile → always check with git diff before committing.
+Always review changes after auto-fix:
 
---force will install breaking changes. Use it only if you’re ready to test everything.
+git diff
 
-In monorepos, only packages/*/ is scanned. If your layout is different, extend the script.
 
-This tool is not a replacement for Dependabot/Renovate/Snyk — think of it as a local helper.
+--force will install breaking changes. Use only if you’re ready to test thoroughly.
 
-Good practices
+Monorepo support is limited to packages/*/. Extend script if your layout is different.
 
-Run this before cutting a release.
+This is a helper, not a replacement for tools like Dependabot, Renovate, or Snyk.
 
-Add it to CI to block merges if there are critical/high vulnerabilities.
+✅ Best Practices
 
-Share the Markdown report in PRs so everyone knows what’s going on.
+Run before every release.
+
+Integrate into CI/CD to block merges if critical/high vulnerabilities exist.
+
+Share the Markdown report with your team for visibility.
