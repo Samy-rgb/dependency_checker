@@ -1,0 +1,14 @@
+[
+  {
+    "project": "free",
+    "path": "C:\\websites\\free",
+    "outdated": {},
+    "vulnerabilities": {
+      "critical": 0,
+      "high": 0,
+      "moderate": 0,
+      "low": 0
+    },
+    "autoFixApplied": true
+  }
+]
