@@ -1,44 +1,18 @@
-📦 Dependency Checker
+ Checker
 
 A lightweight TypeScript tool to keep your project dependencies up-to-date and secure.
 It scans for outdated packages, runs npm audit, and can even auto-fix vulnerabilities.
 Works with single projects and monorepos (packages/*/), and generates both JSON and Markdown reports.
 
-🚀 Features
-
-🔍 Check outdated dependencies (npm outdated)
-
-🛡️ Run security audit (npm audit)
-
-⚡ Auto-fix issues (--fix, with optional --force)
-
-📂 Monorepo support (scans packages/*/)
-
-📑 Generates dependency-report.json + dependency-report.md
-
-🛠️ Setup
+## Installation
 
 Install TypeScript + Node.js typings (if not already installed):
-
+```bash
 npm install --save-dev ts-node typescript @types/node
+```
 
+## Usage
 
-Save the script as dependency-checker.ts in your project root.
-
-(Optional) Create or update tsconfig.json:
-
-{
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "types": ["node"],
-    "strict": true
-  }
-}
-
-📌 Usage
 🔍 Check dependencies
 ts-node dependency-checker.ts
 
@@ -47,6 +21,7 @@ ts-node dependency-checker.ts --fix
 
 💥 Auto-fix everything (⚠️ may break)
 ts-node dependency-checker.ts --fix --force
+```
 
 📊 Output
 
@@ -56,13 +31,14 @@ ts-node dependency-checker.ts --fix --force
 
 📝 dependency-report.md → human-readable (great for PRs or Slack)
 
-Example Markdown report:
-
 ### api-service
 - Path: packages/api
 - Outdated: 2
 - Vulnerabilities: Critical=0, High=1, Moderate=3, Low=5
 - AutoFix: ✅ Applied
+
+
+
 
 ⚠️ Precautions
 
