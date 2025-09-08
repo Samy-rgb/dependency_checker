@@ -1,4 +1,4 @@
- Checker
+📦 Dependency Checker
 
 A lightweight TypeScript tool to keep your project dependencies up-to-date and secure.
 It scans for outdated packages, runs npm audit, and can even auto-fix vulnerabilities.
